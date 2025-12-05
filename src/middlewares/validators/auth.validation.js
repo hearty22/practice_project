@@ -26,7 +26,9 @@ export const registerValidation = [
   })
   ,
   body("password")
-
+  .notEmpty().withMessage("La contraseña es obligatoria")
+  .isString().withMessage("La contraseña debe ser una cadena de texto")
+  .isLength({ min: 8 }).withMessage("La contraseña debe tener al menos 8 caracteres")
   ,
   body("profile.first_name")
   ,
