@@ -1,1 +1,1 @@
-import { userModel } from "./users.js";
+import userModel from "./users.js"

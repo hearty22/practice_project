@@ -20,12 +20,12 @@ const userSchema = new Schema({
     first_name:{type: String, required: true},
     last_name:{type: String, required: true},
     age:{type: Number, required: true},
-    avatar:{type: String, required: true},
-    phone:{type: Number, required: true}
+    avatar:{type: String, required: false},
+    phone:{type: Number, required: false}
   }
   
 });
 
-export const userModel = model("users", userSchema);
+const userModel = model("users", userSchema);
 
-
+export default userModel;

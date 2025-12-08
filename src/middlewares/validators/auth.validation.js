@@ -1,5 +1,6 @@
 import { body } from "express-validator";
 
+import userModel from "../../models/users.js"
 export const registerValidation = [
   body("username")
   .notEmpty().withMessage("El username es obligatorio")
@@ -31,14 +32,26 @@ export const registerValidation = [
   .isLength({ min: 8 }).withMessage("La contraseña debe tener al menos 8 caracteres")
   ,
   body("profile.first_name")
+  .notEmpty().withMessage("El nombre es obligatorio")
+  .isString().withMessage("El nombre debe ser una cadena de texto")
+  .isLength({ min: 3 }).withMessage("El nombre debe tener al menos 3 caracteres")
   ,
   body("profile.last_name")
+  .notEmpty().withMessage("El apellido es obligatorio")
+  .isString().withMessage("El apellido debe ser una cadena de texto")
+  .isLength({ min: 3 }).withMessage("El apellido debe tener al menos 3 caracteres")
   ,
   body("profile.age")
+  .notEmpty().withMessage("La edad es obligatoria")
+  .isNumeric().withMessage("La edad debe ser un número")
+  .isInt().withMessage("La edad debe ser un número entero")
   ,
   body("profile.avatar")
+  .optional().isString().withMessage("El avatar debe ser una cadena de texto"
   ,
   body("profile.phone")
-
+  .optional()
+  .isInt()
+  .withMessage("El teléfono debe ser un número entero"))
 
 ]
