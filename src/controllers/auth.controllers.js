@@ -1,4 +1,4 @@
-import  userModel  from "../models/users.js";
+import { userModel }  from "../models/users.js";
 import { hashPassword, comparePassword } from "../helpers/bcrypt.js";
 import { signToken } from "../helpers/jsonwebtoken.js";
 

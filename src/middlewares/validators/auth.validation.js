@@ -1,6 +1,7 @@
 import { body } from "express-validator";
 
-import userModel from "../../models/users.js"
+import { userModel } from "../../models/users.js";
+
 export const registerValidation = [
   body("username")
   .notEmpty().withMessage("El username es obligatorio")
