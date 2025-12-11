@@ -26,10 +26,14 @@ const productSchema = new Schema({
   name:{type: String, required: true, trim: true},
   slug:{type: String, unique: true, lowercase: true, index: true},
   description:{type: String},
-  basePrice: {type: Number, required: true},
+  base_price: {type: Number, required: true},
   category:{type: String, index: true},
   active:{type: Boolean, default: true},
-  variants:[variantSchema]
+  variants:[variantSchema],
+  images: {
+    type: [String],
+    default: []
+  }
 },{
     timestamps: true
   });
