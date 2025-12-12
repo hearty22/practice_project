@@ -22,14 +22,16 @@ export const createProduct = async (req, res) => {
     // name, slug, description, basePrice, category, variants
     // variants: sku, attributes, priceModifier, stock 
     const { name, slug, description, base_price, category, variants } = req.body;
-    
+    const imagePaths = req.files.map(file => file.filename);
+
     const newProduct = await productModel.create({
       name: name,
       slug: slug,
       description: description,
       base_price: base_price,
       category: category,
-      variants: variants
+      variants: variants,
+      images: imagePaths
       
     })
 
@@ -43,6 +45,20 @@ export const createProduct = async (req, res) => {
     return res.status(500).json({
       ok: false,
       error: `error interno en el createProduct: ${error}`
+    })
+  }
+};
+
+export const updateProduct = (req, res) => {
+  try {
+    return res.status(200).json({
+      ok: true,
+      message: "producto actualizado exitosamente"
+    })
+  } catch (error) {
+    return res.status(500).json({
+      ok: false,
+      error: `error interno en el updateProduct: ${error}`
     })
   }
 };
